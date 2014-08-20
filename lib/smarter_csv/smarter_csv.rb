@@ -195,7 +195,7 @@ module SmarterCSV
       if options[:headers_in_file]        # extract the header line
         # process the header line in the CSV file..
         # the first line of a CSV file contains the header .. it might be commented out, so we need to read it anyhow
-        header = input.split(options[:row_sep]).sub(options[:comment_regexp],'')
+        header = input.split(options[:row_sep]).first
         line_count += 1
         header = header.gsub(options[:strip_chars_from_headers], '') if options[:strip_chars_from_headers]
         if (header =~ %r{#{options[:quote_char]}}) and (! options[:force_simple_split])
